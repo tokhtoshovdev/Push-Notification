@@ -19,10 +19,6 @@ const requestNotificationPermission = async () => {
   if (permission !== "granted") {
     throw new Error("Notification permission not granted");
   }
-
-  // else {
-  //   new Notification("hello world");
-  // }
 };
 
 const main = async () => {
@@ -30,3 +26,44 @@ const main = async () => {
   console.log(reg);
   reg.showNotification("hello world");
 };
+
+// install
+
+window.addEventListener("load", () => {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then((registration) => {
+        console.log(
+          "Service Worker registered with scope:",
+          registration.scope
+        );
+      })
+      .catch((error) => {
+        console.log("Service Worker registration failed:", error);
+      });
+  }
+
+  let deferredPrompt;
+  const installButton = document.getElementById("install-button");
+
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installButton.style.display = "block";
+  });
+
+  installButton.addEventListener("click", () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the install prompt");
+        } else {
+          console.log("User dismissed the install prompt");
+        }
+        deferredPrompt = null;
+      });
+    }
+  });
+});
