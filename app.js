@@ -27,7 +27,7 @@ const main = async () => {
   reg.showNotification("hello world");
 };
 
-// install
+// install app
 
 window.addEventListener("load", () => {
   if ("serviceWorker" in navigator) {
