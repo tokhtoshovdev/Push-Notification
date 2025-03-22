@@ -3,9 +3,9 @@
   "name": "Push Notification",
   "icons": [
     {
-      "src": "./img.jpg",
+      "src": "./img.png",
       "sizes": "640x640",
-      "type": "image/jpg"
+      "type": "image/png"
     }
   ],
   "start_url": ".",
