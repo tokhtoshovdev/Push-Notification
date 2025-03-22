@@ -34,10 +34,7 @@ window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("/sw.js")
       .then((registration) => {
-        console.log(
-          "Service Worker registered with scope:",
-          registration.scope
-        );
+        console.log("Service Worker registered:", registration);
       })
       .catch((error) => {
         console.log("Service Worker registration failed:", error);
@@ -48,6 +45,7 @@ window.addEventListener("load", () => {
   const installButton = document.getElementById("install-button");
 
   window.addEventListener("beforeinstallprompt", (e) => {
+    console.log("beforeinstallprompt event fired");
     e.preventDefault();
     deferredPrompt = e;
     installButton.style.display = "block";

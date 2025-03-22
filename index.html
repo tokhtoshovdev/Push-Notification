@@ -3,32 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="manifest" href="manifest.json" />
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/styles.css" />
     <title>Push Notification</title>
   </head>
   <body>
     <div class="m-5">
-      <button
-        onclick="requestNotificationPermission()"
-        class="px-3 py-2 bg-[tomato] text-white rounded-md"
-      >
+      <button onclick="requestNotificationPermission()">
         Enable Notification
       </button>
 
-      <button
-        onclick="main()"
-        class="px-3 py-2 bg-[tomato] text-white rounded-md"
-      >
-        Push Notification
-      </button>
+      <button onclick="main()">Push Notification</button>
 
-      <button
-        id="install-button"
-        class="px-3 py-2 bg-[tomato] text-white rounded-md"
-      >
-        Install App
-      </button>
+      <h1>Welcome to Squoosh-like PWA</h1>
+      <button id="install-button" style="display: none">Install App</button>
     </div>
     <script src="./app.js"></script>
   </body>
